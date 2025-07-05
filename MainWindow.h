@@ -2,6 +2,9 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_MainWindow.h"
+#include"Task.h"
+#include<qtableview.h>
+
 
 class MainWindow : public QMainWindow
 {
@@ -13,5 +16,7 @@ public:
 
 private:
     Ui::MainWindowClass ui;
+    QTableView* taskTableView; 
+    TaskModel* taskModel;
 };
 
