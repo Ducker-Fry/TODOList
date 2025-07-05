@@ -57,10 +57,8 @@
     <QtMoc Include="DatabaseManager.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Task.h">
+    <QtMoc Include="Task.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
+    </QtMoc>
   </ItemGroup>
 </Project>

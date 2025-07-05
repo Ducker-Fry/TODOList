@@ -106,7 +106,7 @@
     <QtMoc Include="DatabaseManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Task.h" />
+    <QtMoc Include="Task.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
