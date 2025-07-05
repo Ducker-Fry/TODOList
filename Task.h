@@ -32,12 +32,12 @@ public:
    QString priorityString() const;  
 
 private:  
-   int m_id = -1;  
-   QString m_title;  
-   QString m_description;  
-   Priority m_priority = Medium;  
-   QDate m_dueDate;  
-   bool m_completed = false;  
+    int m_id = -1;  // 任务ID, -1表示未设置
+    QString m_title;  // 任务标题
+    QString m_description;  // 任务描述
+    Priority m_priority = Medium;  // 任务优先级, 默认中等
+    QDate m_dueDate;  // 任务截止日期, 默认无效日期
+    bool m_completed = false;  // 任务是否完成, 默认未完成
 };  
 
 class TaskModel : public QSqlTableModel 
