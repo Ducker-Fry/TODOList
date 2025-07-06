@@ -92,9 +92,10 @@ void MainWindow::connect_signal_slot()
     connect(ui.searchButton, &QPushButton::clicked, this, &MainWindow::on_searchButton_clicked);
     connect(ui.priorityComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &MainWindow::on_priorityComboBox_currentIndexChanged);
-    connect(ui.showCompletedCheckBox, &QCheckBox::stateChanged,
+
+    connect(ui.showCompletedCheckBox, &QCheckBox::setCheckState,
         this, &MainWindow::on_showCompletedCheckBox_stateChanged);
-    connect(ui.showOverdueCheckBox, &QCheckBox::stateChanged,
+    connect(ui.showOverdueCheckBox, &QCheckBox::setCheckState,
         this, &MainWindow::on_showOverdueCheckBox_stateChanged);
     connect(ui.startDateEdit, &QDateEdit::dateChanged,
         this, &MainWindow::on_startDateEdit_dateChanged);

@@ -2,6 +2,7 @@
 #include <QtSql/QSqlQuery> // Ensure QSqlQuery is fully included
 #include <QtSql/QSqlError> // For error handling
 #include <QDebug>    // For debugging output
+#include<qcolor.h>
 
 Task::Task(int id, const QString& title, const QString& description, Priority priority, const QDate& dueDate, bool completed)
     : m_id(id), m_title(title), m_description(description),
@@ -92,22 +93,36 @@ TaskModel::TaskModel(QObject* parent) : QSqlTableModel(parent)
     select(); //更新模型里的数据
 }
 
-QVariant TaskModel::data(const QModelIndex& index, int role) const
-{
-    if (role == Qt::DisplayRole)
-    {
-        if (index.column() == PriorityColumn)
-        {
-            int priority = QSqlTableModel::data(index, role).toInt();
-            switch (priority)
-            {
-            case Task::Low: return "Low";
-            case Task::Medium: return "Medium";
-            case Task::High: return "High";
-            default: return "";
+QVariant TaskModel::data(const QModelIndex& index, int role) const {
+    if (!index.isValid())
+        return QVariant();
+        
+    if (role == Qt::DisplayRole) {
+        if (index.column() == PriorityColumn) {
+            int priority = QSqlTableModel::data(index, Qt::EditRole).toInt();
+            switch (priority) {
+                case Task::Low: return "Low";
+                case Task::Medium: return "Medium";
+                case Task::High: return "High";
+                default: return "";
             }
+        } else if (index.column() == DueDateColumn) {
+            QDate dueDate = QDate::fromString(QSqlTableModel::data(index, Qt::EditRole).toString(), "yyyy-MM-dd");
+            return dueDate.toString("yyyy-MM-dd");
+        }
+    } else if (role == Qt::TextAlignmentRole) {
+        if (index.column() == PriorityColumn || index.column() == CompletedColumn)
+            return Qt::AlignCenter;
+    } else if (role == Qt::BackgroundRole) {
+        // 为逾期任务添加红色背景
+        if (index.column() == DueDateColumn) {
+            QDate dueDate = QDate::fromString(QSqlTableModel::data(index, Qt::EditRole).toString(), "yyyy-MM-dd");
+            bool completed = QSqlTableModel::data(this->index(index.row(), CompletedColumn), Qt::EditRole).toBool();
+            if (!completed && dueDate.isValid() && dueDate < QDate::currentDate())
+                return QColor(255, 220, 220); // 浅红色
         }
     }
+    
     return QSqlTableModel::data(index, role);
 }
 

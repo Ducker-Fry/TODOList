@@ -92,6 +92,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="StatisticManager.cpp" />
     <ClCompile Include="Task.cpp" />
     <QtRcc Include="MainWindow.qrc" />
     <QtUic Include="MainWindow.ui" />
@@ -100,6 +101,7 @@
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <None Include="TODOList.ico" />
+    <QtUic Include="Statistic.ui" />
     <ResourceCompile Include="TODOList.rc" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +109,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Task.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="StatisticManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
