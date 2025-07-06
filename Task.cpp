@@ -201,29 +201,59 @@ QList<Task> TaskModel::getAllTasks() const
     return tasks;
 }
 
-void TaskModel::setFilterByStatus(bool showCompleted, bool showOverdue)
-{
-    QString filter;
-    if (!showCompleted)
-    {
-        filter += "completed = 0";
-    }
-    if (showOverdue)
-    {
-        if (!filter.isEmpty())
-        {
-            filter += " AND ";
-        }
-        filter += "due_date < CURDATE() AND completed = 0";
-    }
-    setFilter(filter);
-    select();
+void TaskModel::setFilterByStatus(bool showCompleted, bool showOverdue) {
+    m_showCompleted = showCompleted;
+    m_showOverdue = showOverdue;
+    applyFilters();
 }
 
-void TaskModel::setSearchText(const QString& text)
-{
-    QString filter = QString("title LIKE '%%1%' OR description LIKE '%%1%'").arg(text);
-    setFilter(filter);
+void TaskModel::setFilterByPriority(Task::Priority priority) {
+    m_priorityFilter = priority;
+    applyFilters();
+}
+
+void TaskModel::setFilterByDateRange(const QDate& startDate, const QDate& endDate) {
+    m_startDate = startDate;
+    m_endDate = endDate;
+    applyFilters();
+}
+
+void TaskModel::setSearchText(const QString& text) {
+    m_searchText = text;
+    applyFilters();
+}
+
+void TaskModel::applyFilters() {
+    QStringList filters;
+    
+    // 状态过滤
+    if (!m_showCompleted) {
+        filters.append("completed = 0");
+    }
+    if (m_showOverdue) {
+        filters.append("due_date < CURDATE() AND completed = 0");
+    }
+    
+    // 优先级过滤
+    if (m_priorityFilter != Task::Low) { // 如果选择了特定优先级
+        filters.append(QString("priority = %1").arg(m_priorityFilter));
+    }
+    
+    // 日期过滤
+    if (m_startDate.isValid() && m_endDate.isValid()) {
+        filters.append(QString("due_date BETWEEN '%1' AND '%2'")
+                      .arg(m_startDate.toString("yyyy-MM-dd"))
+                      .arg(m_endDate.toString("yyyy-MM-dd")));
+    }
+    
+    // 搜索过滤
+    if (!m_searchText.isEmpty()) {
+        filters.append(QString("(title LIKE '%%1%' OR description LIKE '%%1%')").arg(m_searchText));
+    }
+    
+    // 组合所有过滤条件
+    QString finalFilter = filters.join(" AND ");
+    setFilter(finalFilter);
     select();
 }
 

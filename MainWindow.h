@@ -19,10 +19,19 @@ private slots:
     void on_deleteButton_clicked();
     void on_updateButton_clicked();
     void on_searchButton_clicked();
+    void on_filterButton_clicked();
+    void on_priorityComboBox_currentIndexChanged(int index);
+    void on_showCompletedCheckBox_stateChanged(int state);
+    void on_showOverdueCheckBox_stateChanged(int state);
+    void on_startDateEdit_dateChanged(const QDate& date);
+    void on_endDateEdit_dateChanged(const QDate& date);
 
 private:
     Ui::MainWindowClass ui;
     QTableView* taskTableView; 
     TaskModel* taskModel;
+
+    void initFilters();
+    void connect_signal_slot();
 };
 

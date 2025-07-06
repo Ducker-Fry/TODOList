@@ -71,4 +71,15 @@ public:
    // 过滤方法  
    void setFilterByStatus(bool showCompleted, bool showOverdue);  
    void setSearchText(const QString& text);  
+   void setFilterByPriority(Task::Priority priority);
+   void setFilterByDateRange(const QDate& startDate, const QDate& endDate);
+   void applyFilters();
+
+private:
+    QString m_searchText;
+    Task::Priority m_priorityFilter = Task::Low; // 默认不过滤
+    bool m_showCompleted = false;
+    bool m_showOverdue = false;
+    QDate m_startDate;
+    QDate m_endDate;
 };
