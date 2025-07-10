@@ -11,14 +11,15 @@ class StatisticalChart : public QWidget
     Q_OBJECT
 
 public:
-    StatisticalChart(QWidget *parent = nullptr);
+    StatisticalChart(QWidget *parent = nullptr,StatisticsManager* statisticManager = nullptr);
     ~StatisticalChart();
 
-    void setStatisticsManager(StatisticsManager* statisticsManager);
     void createPriorityDistributionChart();
     void createDailyCompletionChart();
 private:
     Ui::StatisticalChartClass ui;
     StatisticsManager* m_statisticsManager;
+    PieChartWidget* pieChartWidget = nullptr;
+    BarChartWidget* barChartWidget = nullptr;
 };
 

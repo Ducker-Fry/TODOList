@@ -55,6 +55,15 @@
     <ClCompile Include="StatisticManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BarChart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PieChart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StatisticalChart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="DatabaseManager.h">
@@ -66,9 +75,18 @@
     <QtMoc Include="StatisticManager.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="StatisticalChart.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="PieChart.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="BarChart.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="Statistic.ui">
+    <QtUic Include="StatisticalChart.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

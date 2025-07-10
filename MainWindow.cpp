@@ -9,15 +9,17 @@ MainWindow::MainWindow(QWidget *parent)
     ui.setupUi(this);
     connect_signal_slot();
 
-    // 初始化筛选控件
-    initFilters();
-
     // 初始化任务模型和视图
     taskModel = new TaskModel(this);
     taskTableView = new QTableView(this);
     taskTableView->setModel(taskModel);
 
+    // 初始化筛选控件
+    initFilters();
+
     setCentralWidget(taskTableView);
+    statisticsManager = new StatisticsManager(taskModel, this);
+    statisticalChart = new StatisticalChart(this, statisticsManager);
 }
 
 MainWindow::~MainWindow()

@@ -2,6 +2,7 @@
 #include <QtSql/QSqlTableModel>  
 #include <QString>  
 #include <QDate>  
+#include"DatabaseManager.h"
 
 class Task {  
 public:  

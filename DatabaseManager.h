@@ -2,6 +2,7 @@
 #include <QtCore/QObject>  
 #include <QtSql/QSqlDatabase> 
 #include <QtCore/QString>  
+#include<qsqlerror.h>
 
 class DatabaseManager : public QObject {  
   Q_OBJECT  

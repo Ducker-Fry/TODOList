@@ -127,9 +127,9 @@
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>330</y>
-      <width>381</width>
+      <x>710</x>
+      <y>340</y>
+      <width>211</width>
       <height>101</height>
      </rect>
     </property>
@@ -192,9 +192,9 @@
    <widget class="QWidget" name="horizontalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>340</y>
-      <width>271</width>
+      <x>470</x>
+      <y>350</y>
+      <width>231</width>
       <height>80</height>
      </rect>
     </property>
@@ -222,6 +222,16 @@
      </item>
     </layout>
    </widget>
+   <widget class="StatisticalChart" name="statisticalChart" native="true">
+    <property name="geometry">
+     <rect>
+      <x>19</x>
+      <y>89</y>
+      <width>341</width>
+      <height>331</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -244,6 +254,14 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>StatisticalChart</class>
+   <extends>QWidget</extends>
+   <header>statisticalchart.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="MainWindow.qrc"/>
  </resources>

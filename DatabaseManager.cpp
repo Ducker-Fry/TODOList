@@ -13,8 +13,8 @@ DatabaseManager::DatabaseManager(QObject* parent) : QObject(parent) {
     m_db = QSqlDatabase::addDatabase("QMYSQL");
     m_db.setHostName("localhost");
     m_db.setDatabaseName("todo_db");
-    m_db.setUserName("your_username");
-    m_db.setPassword("your_password");
+    m_db.setUserName("root");
+    m_db.setPassword("112106120Sql@");
 }
 
 DatabaseManager::~DatabaseManager() {

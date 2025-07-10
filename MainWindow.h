@@ -4,6 +4,7 @@
 #include "ui_MainWindow.h"
 #include"Task.h"
 #include<qtableview.h>
+#include"StatisticalChart.h"
 
 
 class MainWindow : public QMainWindow
@@ -30,6 +31,8 @@ private:
     Ui::MainWindowClass ui;
     QTableView* taskTableView; 
     TaskModel* taskModel;
+    StatisticsManager* statisticsManager;
+    StatisticalChart* statisticalChart;
 
     void initFilters();
     void connect_signal_slot();
