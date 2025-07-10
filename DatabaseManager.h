@@ -8,7 +8,7 @@ class DatabaseManager : public QObject {
   Q_OBJECT  
 public:  
   static DatabaseManager& instance();  
-  bool initDatabase();  
+  bool initDatabase(const QString& dbPath = "todo.db");
   QSqlDatabase database() const;  
 
   // 数据库操作方法  

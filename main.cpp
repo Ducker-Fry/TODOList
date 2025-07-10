@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
+    qDebug() << "Database initialized successfully.";
     MainWindow window;
     window.show();
     return app.exec();
