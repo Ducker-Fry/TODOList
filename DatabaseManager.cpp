@@ -23,12 +23,63 @@ DatabaseManager::~DatabaseManager() {
     }
 }
 
-bool DatabaseManager::initDatabase(const QString& dbPath) {
-    if (!m_db.open()) {
-        qDebug() << "Failed to open database:" << m_db.lastError().text();
-        return false;
+bool DatabaseManager::initDatabase()
+{
+    // 尝试直接连接 todo_db 数据库
+    if (m_db.open())
+    {
+        return createTables();
     }
-    return createTables();
+
+    // 检查错误是否为 "database doesn't exist"
+    QString errorText = m_db.lastError().text();
+    qDebug() << "Failed to open database:" << errorText;
+
+    // 如果是因为数据库不存在导致的失败，尝试创建数据库
+    if (errorText.contains("1049") || errorText.contains("database doesn't exist"))
+    {
+        // 关闭当前连接
+        m_db.close();
+
+        // 创建一个临时连接，连接到 MySQL 系统数据库
+        QSqlDatabase tempDb = QSqlDatabase::addDatabase("QMYSQL", "tempConnection");
+        tempDb.setHostName(m_db.hostName());
+        tempDb.setUserName(m_db.userName());
+        tempDb.setPassword(m_db.password());
+        tempDb.setDatabaseName("mysql"); // 连接到系统数据库
+
+        if (!tempDb.open())
+        {
+            qDebug() << "Failed to connect to MySQL system database:" << tempDb.lastError().text();
+            return false;
+        }
+
+        // 创建新数据库
+        QSqlQuery query(tempDb);
+        if (!query.exec("CREATE DATABASE IF NOT EXISTS todo_db"))
+        {
+            qDebug() << "Failed to create database:" << query.lastError().text();
+            tempDb.close();
+            return false;
+        }
+        tempDb.close();
+
+        // 移除临时连接
+        QSqlDatabase::removeDatabase("tempConnection");
+
+        // 重新尝试连接新创建的数据库
+        m_db.setDatabaseName("todo_db");
+        if (!m_db.open())
+        {
+            qDebug() << "Failed to open newly created database:" << m_db.lastError().text();
+            return false;
+        }
+
+        return createTables();
+    }
+
+    // 其他错误，返回失败
+    return false;
 }
 
 QSqlDatabase DatabaseManager::database() const {

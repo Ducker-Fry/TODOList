@@ -6,6 +6,7 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    qDebug() << "Available drivers:" << QSqlDatabase::drivers();
     // 初始化数据库
     if (!DatabaseManager::instance().initDatabase())
     {
