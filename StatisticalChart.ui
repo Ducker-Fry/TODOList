@@ -7,40 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>400</height>
+    <height>947</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>StatisticalChart</string>
   </property>
-  <widget class="QWidget" name="horizontalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>581</width>
-     <height>381</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="PieChartWidget" name="widget" native="true"/>
-    </item>
-    <item>
-     <widget class="PieChartWidget" name="widget_2" native="true"/>
-    </item>
-   </layout>
-  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>PieChartWidget</class>
-   <extends>QWidget</extends>
-   <header>PieChart.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

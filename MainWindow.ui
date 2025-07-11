@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>934</width>
-    <height>510</height>
+    <height>808</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -127,8 +127,8 @@
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>340</y>
+      <x>720</x>
+      <y>640</y>
       <width>211</width>
       <height>101</height>
      </rect>
@@ -192,8 +192,8 @@
    <widget class="QWidget" name="horizontalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>350</y>
+      <x>10</x>
+      <y>660</y>
       <width>231</width>
       <height>80</height>
      </rect>
@@ -222,13 +222,23 @@
      </item>
     </layout>
    </widget>
-   <widget class="StatisticalChart" name="statisticalChart" native="true">
+   <widget class="QTableView" name="tableView">
     <property name="geometry">
      <rect>
-      <x>19</x>
-      <y>89</y>
-      <width>341</width>
-      <height>331</height>
+      <x>10</x>
+      <y>80</y>
+      <width>911</width>
+      <height>241</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="StatisticalChart" name="statistical_chart" native="true">
+    <property name="geometry">
+     <rect>
+      <x>29</x>
+      <y>359</y>
+      <width>881</width>
+      <height>251</height>
      </rect>
     </property>
    </widget>
@@ -258,7 +268,7 @@
   <customwidget>
    <class>StatisticalChart</class>
    <extends>QWidget</extends>
-   <header>statisticalchart.h</header>
+   <header location="global">statisticalchart.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

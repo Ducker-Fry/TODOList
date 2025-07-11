@@ -81,3 +81,4 @@ void PieChartWidget::paintEvent(QPaintEvent *event) {
         i++;
     }
 }
+

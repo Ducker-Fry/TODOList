@@ -30,6 +30,11 @@ bool DatabaseManager::initDatabase(const QString& dbPath) {
     return createTables();
 }
 
+QSqlDatabase DatabaseManager::database() const
+{
+    return QSqlDatabase();
+}
+
 bool DatabaseManager::createTables() {
     QSqlQuery query(m_db);
     // ĞŞÕıSQLÓï·¨£º

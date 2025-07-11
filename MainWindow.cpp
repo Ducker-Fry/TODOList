@@ -2,6 +2,7 @@
 #include <QInputDialog> // Ensure this header is included for QInputDialog
 #include <QLineEdit>    // Ensure this header is included for QLineEdit
 #include <QMessageBox>
+#include<qlayout.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,15 +12,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     // 初始化任务模型和视图
     taskModel = new TaskModel(this);
-    taskTableView = new QTableView(this);
-    taskTableView->setModel(taskModel);
-
+    StatisticsManager* statisticsManager = new StatisticsManager(taskModel, this);
+    ui.tableView->setModel(taskModel);
+    ui.statistical_chart->setStatisticsManager(statisticsManager);
     // 初始化筛选控件
     initFilters();
-
-    setCentralWidget(taskTableView);
-    statisticsManager = new StatisticsManager(taskModel, this);
-    statisticalChart = new StatisticalChart(this, statisticsManager);
 }
 
 MainWindow::~MainWindow()
