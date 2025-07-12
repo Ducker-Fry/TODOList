@@ -64,6 +64,9 @@
     <ClCompile Include="StatisticalChart.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TaskCreateDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="DatabaseManager.h">
@@ -84,9 +87,15 @@
     <QtMoc Include="BarChart.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="TaskCreateDialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="StatisticalChart.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="TaskCreateDialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

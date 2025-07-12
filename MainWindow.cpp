@@ -3,6 +3,7 @@
 #include <QLineEdit>    // Ensure this header is included for QLineEdit
 #include <QMessageBox>
 #include<qlayout.h>
+#include"TaskCreateDialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -24,11 +25,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_addButton_clicked()
 {
-    bool ok;
-    QString title = QInputDialog::getText(this, "Add Task", "Title:", QLineEdit::Normal, "", &ok);
-    if (ok && !title.isEmpty())
-    {
-        Task task(-1, title, "", Task::Medium, QDate(), false);
+    TaskCreateDialog* dialog = new TaskCreateDialog(this); // 堆上分配
+    dialog->setAttribute(Qt::WA_DeleteOnClose); // 对话框关闭时自动删除
+
+    connect(dialog, &TaskCreateDialog::taskCreated, this, [=](const Task& task) {
         if (taskModel->addTask(task))
         {
             QMessageBox::information(this, "Success", "Task added successfully.");
@@ -37,7 +37,9 @@ void MainWindow::on_addButton_clicked()
         {
             QMessageBox::critical(this, "Error", "Failed to add task.");
         }
-    }
+        });
+
+    dialog->show(); // 非模态显示
 }
 
 void MainWindow::on_deleteButton_clicked()

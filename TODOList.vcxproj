@@ -92,14 +92,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Draft\TaskCreateDialog.cpp" />
     <ClCompile Include="BarChart.cpp" />
     <ClCompile Include="PieChart.cpp" />
     <ClCompile Include="StatisticalChart.cpp" />
     <ClCompile Include="StatisticManager.cpp" />
     <ClCompile Include="Task.cpp" />
+    <ClCompile Include="TaskCreateDialog.cpp" />
     <QtRcc Include="MainWindow.qrc" />
-    <QtUic Include="..\..\..\..\Draft\TaskCreateDialog.ui" />
     <QtUic Include="MainWindow.ui" />
     <QtMoc Include="MainWindow.h" />
     <ClCompile Include="DatabaseManager.cpp" />
@@ -107,6 +106,7 @@
     <ClCompile Include="main.cpp" />
     <None Include="TODOList.ico" />
     <QtUic Include="StatisticalChart.ui" />
+    <QtUic Include="TaskCreateDialog.ui" />
     <ResourceCompile Include="TODOList.rc" />
   </ItemGroup>
   <ItemGroup>
@@ -128,7 +128,7 @@
     <QtMoc Include="BarChart.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="..\..\..\..\Draft\TaskCreateDialog.h" />
+    <QtMoc Include="TaskCreateDialog.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
